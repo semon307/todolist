@@ -10,15 +10,10 @@ import Button from '@mui/material/Button';
 import {useFormik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import {loginTC} from "../../BLL/AuthReducer";
-import {FormikErrorType, LoginParamsType} from "../../DAL/todolists-api";
+import {FormikErrorType} from "../../DAL/todolists-api";
 import {AppRootStateType} from "../../BLL/store";
 import {Navigate} from "react-router-dom";
 
-// type FormikErrorType = {
-//     email?: string
-//     password?: string
-//     rememberMe?: boolean
-// }
 
 export const Login = () => {
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.auth.isLoggedIn)
@@ -76,13 +71,10 @@ export const Login = () => {
                     <TextField type="password" label="Password"
                                margin="normal"
                         {...formik.getFieldProps("password")}
-                               // onBlur={formik.handleBlur}
-                               // name='password' onChange={formik.handleChange} value={formik.values.password}
                     />
                     {formik.touched.password && formik.errors.password ? <div style={{color: "red"}}>{formik.errors.password}</div> : null}
                     <FormControlLabel label={'Remember me'} control={<Checkbox
                         {...formik.getFieldProps("rememberMe")}
-                        // name='rememberMe' onChange={formik.handleChange} checked={formik.values.rememberMe}/>}
                    />}/>
                     <Button type={'submit'} variant={'contained'} color={'primary'}>
                         Login
